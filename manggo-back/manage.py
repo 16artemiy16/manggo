@@ -1,8 +1,11 @@
 import os
 from app import create_app
 
+
 env = os.environ.get('APP_ENV', 'dev')
 app = create_app('config.%sConfig' % env.capitalize())
 
-if __name__ == '__main__':
-    app.run()
+
+@app.shell_context_processor
+def make_shell_context():
+    return dict(app=app)
