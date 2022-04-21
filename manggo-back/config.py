@@ -1,4 +1,5 @@
 import os
+import logging
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -17,3 +18,11 @@ class TestConfig(Config):
 
 class DevConfig(Config):
     DEBUG = True
+    LOGGER = dict(
+        format='%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s',
+        level=logging.DEBUG,
+        handlers=[
+            logging.FileHandler("dev.log"),
+            logging.StreamHandler()
+        ]
+    )
