@@ -12,4 +12,6 @@ pip install -r requirements.txt  # Install the packages
 Run the app
 ```shell
 python main.py
+# or run via gunicorn
+python -m gunicorn
 ```
